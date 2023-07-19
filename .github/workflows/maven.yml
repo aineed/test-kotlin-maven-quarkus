@@ -14,6 +14,12 @@ on:
   pull_request:
     branches: [ "main" ]
 
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+  PROJECT_NAME: test-kotlin-maven-quarkus
+  PROJECT_VERSION: latest
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -27,3 +33,6 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+
+    - name: Push to packages
+      run: docker push ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.PROJECT_NAME }}:${{ env.PROJECT_VERSION }}
