@@ -35,7 +35,7 @@ jobs:
       run: mvn -B package --file pom.xml
 
     - name: Docker build
-      run: docker build -t aineed/test-kotlin-maven-quarkus:latest .
+      run: docker build . -t aineed/test-kotlin-maven-quarkus:latest
       - name: Login to DockerHub
         uses: docker/login-action@v1
         with:
