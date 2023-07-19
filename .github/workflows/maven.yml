@@ -15,7 +15,7 @@ on:
     branches: [ "main" ]
 
 env:
-  REGISTRY: ghcr.io
+  REGISTRY: hub.docker.com
   IMAGE_NAME: ${{ github.repository }}
   PROJECT_NAME: test-kotlin-maven-quarkus
   PROJECT_VERSION: latest
@@ -35,4 +35,4 @@ jobs:
       run: mvn -B package --file pom.xml
 
     - name: Push to packages
-      run: docker push ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.PROJECT_NAME }}:${{ env.PROJECT_VERSION }}
+      run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.PROJECT_NAME }}:${{ env.PROJECT_VERSION }}
