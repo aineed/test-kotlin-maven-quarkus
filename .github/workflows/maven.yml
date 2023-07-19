@@ -27,7 +27,3 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-    - name: Docker Build
-      run: docker build -t aineed/test-kotlin-maven-quarkus .
-    - name: Docker Push
-      run: docker push aineed/test-kotlin-maven-quarkus
