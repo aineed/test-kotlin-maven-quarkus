@@ -58,3 +58,8 @@ If you want to learn more about building native executables, please consult http
 - SmallRye OpenAPI ([guide](https://quarkus.io/guides/openapi-swaggerui)): Document your REST APIs with OpenAPI - comes
   with Swagger UI
 - Kotlin ([guide](https://quarkus.io/guides/kotlin)): Write your services in Kotlin
+
+
+## DOCKER
+To run postgres in docker locally
+```docker run --name aineed-db -e POSTGRES_DB=aineed -e POSTGRES_USER=aineed -e POSTGRES_PASSWORD=password -p 5432:5432 -d postgres```
