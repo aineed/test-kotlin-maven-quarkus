@@ -18,5 +18,5 @@ class ProfileEntity {
         lateinit var email: String
 
         @Column(name = "phone_number")
-        lateinit var phoneNumber: Number
+        lateinit var phoneNumber: String
 }

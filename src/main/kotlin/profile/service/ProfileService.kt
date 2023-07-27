@@ -28,12 +28,18 @@ class ProfileService(
         return profileEntity?.let { mapToDto(it) }
     }
 
+    @Transactional
+    fun findByUsername(username: String): Profile? {
+        val profileEntity = profileRepository.findByUsername(username)
+        return profileEntity?.let { mapToDto(it) }
+    }
+
     fun mapToEntity(profile: Profile): ProfileEntity {
         val profileEntity = ProfileEntity()
         profileEntity.firstname = profile.firstname
         profileEntity.lastname = profile.lastname
         profileEntity.email = profile.email
-        profileEntity.phoneNumber = profile.phoneNumber
+        profileEntity.phoneNumber = profile.phoneNumber.toString()
         profileEntity.username = profile.username
         return profileEntity
     }
@@ -44,6 +50,6 @@ class ProfileService(
                 username = profileEntity.username,
                 lastname = profileEntity.lastname,
                 email = profileEntity.email,
-                phoneNumber = profileEntity.phoneNumber)
+                phoneNumber = profileEntity.phoneNumber.toInt())
     }
 }
