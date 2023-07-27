@@ -1,6 +1,4 @@
-package domain
-
-import jakarta.validation.constraints.Email
+package profile.domain
 
 data class Profile(
         val username: String,
