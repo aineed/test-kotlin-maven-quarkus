@@ -1,33 +1,40 @@
-package profile.rest
+package advertisement.rest
 
+import advertisement.domain.Ad
+import advertisement.service.AdService
 import common.response.MyResponse
 import jakarta.ws.rs.*
 import jakarta.ws.rs.core.MediaType
 import jakarta.ws.rs.core.Response
-import profile.domain.Profile
-import profile.service.ProfileService
 
-@Path("/profile")
-class ProfileResource(val profileService: ProfileService) {
+@Path("/ad")
+class AdResource(val adService: AdService) {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    fun storeNewProfile(profile: Profile): Response {
-        profileService.storeProfile(profile)
-        return Response.status(Response.Status.CREATED).entity(profile).build()
+    fun addNewAdd(ad: Ad): Response {
+        adService.storeProfile(ad)
+        return Response.status(Response.Status.CREATED).entity(ad).build()
+    }
+
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    fun updateAd(ad: Ad): Response {
+        adService.storeProfile(ad)
+        return Response.status(Response.Status.CREATED).entity(ad).build()
     }
 
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/all")
-    fun getAllProfiles(): List<Profile> {
+    fun getAllProfiles(): List<Ad> {
         return listOf()
     }
 
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     fun getProfile(@HeaderParam("profileId") profileId: Int): Response {
-        val profile = profileService.getProfileById(profileId)
+        val profile = adService.getProfileById(profileId)
         if (profile != null) {
             return Response.status(Response.Status.OK).entity(profile).build()
         }
@@ -37,14 +44,14 @@ class ProfileResource(val profileService: ProfileService) {
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/username")
-    fun checkUsernameExist(@HeaderParam("username") username: String): Profile? {
-        return profileService.findByUsername(username)
+    fun checkUsernameExist(@HeaderParam("username") username: String): Ad? {
+        return adService.findByUsername(username)
     }
 
     @DELETE
     @Consumes(MediaType.APPLICATION_JSON)
     fun deleteProfiles(@HeaderParam("profileId") profileId: Int): Response {
-        val deleted = profileService.deleteProfile(profileId)
+        val deleted = adService.deleteProfile(profileId)
         if (deleted) {
             return Response.status(Response.Status.OK).entity(MyResponse("Denne profilen er slettet: $profileId")).build()
         }

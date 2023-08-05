@@ -41,6 +41,9 @@ class ProfileService(
         profileEntity.email = profile.email
         profileEntity.phoneNumber = profile.phoneNumber.toString()
         profileEntity.username = profile.username
+        profileEntity.userType = profile.userType
+        profileEntity.description = profile.description
+        profileEntity.skills = profile.skills
         return profileEntity
     }
 
@@ -50,6 +53,9 @@ class ProfileService(
                 username = profileEntity.username,
                 lastname = profileEntity.lastname,
                 email = profileEntity.email,
-                phoneNumber = profileEntity.phoneNumber.toInt())
+                phoneNumber = profileEntity.phoneNumber.toInt(),
+                userType = profileEntity.userType,
+                description = profileEntity.description,
+                skills = profileEntity.skills)
     }
 }

@@ -1,0 +1,9 @@
+CREATE TABLE category
+(
+    name VARCHAR PRIMARY KEY
+);
+
+CREATE TABLE tag
+(
+    name VARCHAR PRIMARY KEY
+);

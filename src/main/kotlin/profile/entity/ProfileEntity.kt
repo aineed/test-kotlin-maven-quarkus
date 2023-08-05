@@ -17,6 +17,10 @@ class ProfileEntity {
         lateinit var lastname: String
         lateinit var email: String
 
+
         @Column(name = "phone_number")
         lateinit var phoneNumber: String
+        lateinit var userType: String
+        lateinit var description: String
+        lateinit var skills: String
 }
