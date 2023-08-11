@@ -12,15 +12,27 @@ class ProfileEntity {
         @Id
         val profileId: Int = 0
 
+        @Column(name = "username")
         lateinit var username: String
-        lateinit var firstname: String
-        lateinit var lastname: String
-        lateinit var email: String
 
+        @Column(name = "firstname")
+        lateinit var firstname: String
+
+        @Column(name = "lastname")
+        lateinit var lastname: String
+
+        @Column(name = "email")
+        lateinit var email: String
 
         @Column(name = "phone_number")
         lateinit var phoneNumber: String
+
+        @Column(name = "user_type")
         lateinit var userType: String
+
+        @Column(name = "description")
         lateinit var description: String
+
+        @Column(name = "skills")
         lateinit var skills: String
 }

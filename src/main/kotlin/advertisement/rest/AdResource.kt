@@ -12,50 +12,43 @@ class AdResource(val adService: AdService) {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    fun addNewAdd(ad: Ad): Response {
-        adService.storeProfile(ad)
+    fun addNewAd(ad: Ad): Response {
+        adService.storeAd(ad)
         return Response.status(Response.Status.CREATED).entity(ad).build()
     }
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     fun updateAd(ad: Ad): Response {
-        adService.storeProfile(ad)
+        adService.storeAd(ad)
         return Response.status(Response.Status.CREATED).entity(ad).build()
     }
 
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/all")
-    fun getAllProfiles(): List<Ad> {
+    fun getAllAds(): List<Ad> {
         return listOf()
     }
 
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
-    fun getProfile(@HeaderParam("profileId") profileId: Int): Response {
-        val profile = adService.getProfileById(profileId)
-        if (profile != null) {
-            return Response.status(Response.Status.OK).entity(profile).build()
+    fun getAd(@HeaderParam("adId") adId: Int): Response {
+        val ad = adService.getAdById(adId)
+        if (ad != null) {
+            return Response.status(Response.Status.OK).entity(ad).build()
         }
-        return Response.status(Response.Status.NOT_FOUND).entity(profileId).build()
-    }
-
-    @GET
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Path("/username")
-    fun checkUsernameExist(@HeaderParam("username") username: String): Ad? {
-        return adService.findByUsername(username)
+        return Response.status(Response.Status.NOT_FOUND).entity(adId).build()
     }
 
     @DELETE
     @Consumes(MediaType.APPLICATION_JSON)
-    fun deleteProfiles(@HeaderParam("profileId") profileId: Int): Response {
-        val deleted = adService.deleteProfile(profileId)
+    fun deleteAd(@HeaderParam("profileId") adId: Int): Response {
+        val deleted = adService.deleteAd(adId)
         if (deleted) {
-            return Response.status(Response.Status.OK).entity(MyResponse("Denne profilen er slettet: $profileId")).build()
+            return Response.status(Response.Status.OK).entity(MyResponse("Denne annonsen er slettet: $adId")).build()
         }
-        return Response.status(Response.Status.EXPECTATION_FAILED).entity(MyResponse("Denne profilen ble ikke slettet: $profileId")).build()
+        return Response.status(Response.Status.EXPECTATION_FAILED).entity(MyResponse("Denne annonsen ble ikke slettet: $adId")).build()
     }
 }
 

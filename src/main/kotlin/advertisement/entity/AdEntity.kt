@@ -12,6 +12,12 @@ class AdEntity {
     @Id
     val adId: Int = 0
 
+    @Column(name = "title")
     lateinit var title: String
+
+    @Column(name = "category_name")
     lateinit var categoryName: String
+
+    @Column(name = "profile_id")
+    var profileId: Int = 0
 }
