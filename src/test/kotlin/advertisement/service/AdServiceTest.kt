@@ -11,4 +11,12 @@ class AdServiceTest {
 
         assertEquals(category.name, categoryEntity.name)*/
     }
+
+    @Test
+    fun should_map_from_category_domain_to_category2(){
+        /* val category = Category("String")
+         val categoryEntity = adService.mapToCategoryEntity(category)
+
+         assertEquals(category.name, categoryEntity.name)*/
+    }
 }
