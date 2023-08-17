@@ -42,5 +42,11 @@ jobs:
         repository: aineed/test-kotlin-maven-quarkus
         tags: ${{github.run_number}}
 
+    - name: docker login
+      env:
+        DOCKER_USER: ${{secrets.DOCKER_USERNAME }}
+        DOKCER_PASSWORD: ${{secrets.DOCKER_PASSWORD }}
+      run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+
     - name: Publish to Docker Hub to latest
       run: docker push aineed/test-kotlin-maven-quarkus
