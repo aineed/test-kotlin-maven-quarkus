@@ -40,6 +40,4 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: aineed/test-kotlin-maven-quarkus
-        tags: |
-          ${{github.run_number}}
-          latest
+        tags: ${{github.run_number}}
