@@ -63,3 +63,6 @@ If you want to learn more about building native executables, please consult http
 ## DOCKER
 To run postgres in docker locally
 ```docker run --name aineed-db -e POSTGRES_DB=aineed -e POSTGRES_USER=aineed -e POSTGRES_PASSWORD=password -p 5432:5432 -d postgres```
+
+## Swagger doc
+All endpoints are documented in this swagger-ui: `http://localhost:8080/q/swagger-ui/`
