@@ -5,6 +5,7 @@ import jakarta.ws.rs.*
 import jakarta.ws.rs.core.MediaType
 import jakarta.ws.rs.core.Response
 import profile.domain.Profile
+import profile.entity.ProfileEntity
 import profile.service.ProfileService
 
 @Path("/profile")
@@ -20,8 +21,8 @@ class ProfileResource(val profileService: ProfileService) {
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/all")
-    fun getAllProfiles(): List<Profile> {
-        return listOf()
+    fun getAllProfiles(): List<ProfileEntity> {
+        return profileService.getAllProfiles()
     }
 
     @GET

@@ -29,6 +29,12 @@ class ProfileService(
     }
 
     @Transactional
+    fun getAllProfiles(): List<ProfileEntity> {
+        return profileRepository.findAll().list()
+
+    }
+
+    @Transactional
     fun findByUsername(username: String): Profile? {
         val profileEntity = profileRepository.findByUsername(username)
         return profileEntity?.let { mapToDto(it) }
